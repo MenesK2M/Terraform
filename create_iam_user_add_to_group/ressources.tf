@@ -1,4 +1,4 @@
-resource "aws_iam_user" "1erUser" {
+resource "aws_iam_user" "UserOne" {
   name = "Maxime"
 }
 
@@ -7,9 +7,9 @@ resource "aws_iam_group" "mygroup" {
 }
 
 resource "aws_iam_group_membership" "Maxime_group_membership" {
-  name = "${aws_iam_group.mygroup.name}-${aws_iam_user.myIamUser.name}"
+  name = "${aws_iam_group.mygroup.name}-${aws_iam_user.UserOne.name}"
   users = [
-    aws_iam_user.1erUser.name,
+    aws_iam_user.UserOne.name,
   ]
   group = aws_iam_group.mygroup.name
 }
