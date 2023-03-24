@@ -20,8 +20,8 @@ resource "aws_iam_group" "mygroup" {
 }
 
 resource "aws_iam_group_membership" "Maxime_group_membership" {
-  for_each = var.users
+  for_each = aws_iam_user.createUsers
   name     = aws_iam_group.mygroup.name
-  users    = [ aws_iam_user.createUsers[each.key].name ]
+  users    = [aws_iam_user.createUsers[each.key].name]
   group    = aws_iam_group.mygroup.name
 }
